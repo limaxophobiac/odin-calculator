@@ -22,6 +22,15 @@ const multBtn = document.querySelector('#multiply');
 const divBtn = document.querySelector('#divide');
 const eqBtn = document.querySelector('#equals');
 
+const clrBtn = document.querySelector('#clear');
+
+clrBtn.addEventListener("click", function() {
+    inputArray = [];
+    displayNumber='0';
+    display.textContent = displayNumber;
+    inputPushed = false;
+});
+
 addBtn.addEventListener("click", function(){
     saveInput("+");
     console.log(inputArray);
