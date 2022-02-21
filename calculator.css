@@ -1,0 +1,31 @@
+#calcSpace{
+    background-color: #131313;
+    height: 600px;
+    width: 300px;
+}
+#display{
+    background-color: #AAAAAA;
+    height: 50px;
+    width: 240px;
+}
+
+#clear{
+    display: inline-block;
+    margin: 0px;
+    width: 120px;
+    height: 60px;
+}
+
+.nBotton{
+    display: inline-block;
+    margin: 0px;
+    width: 60px;
+    height: 60px;
+}
+
+.opBotton{
+    display: inline-block;
+    margin: 0px;
+    width: 60px;
+    height: 60px;
+}

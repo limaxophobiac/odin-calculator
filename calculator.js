@@ -43,16 +43,18 @@ divBtn.addEventListener("click", function(){
 });
 
 eqBtn.addEventListener("click", function(){
+    if (inputArray[inputArray.length -1] === "="){return}
     inputArray.push(displayNumber);
     let len = inputArray.length;
     displayNumber = operate(inputArray[len-2], inputArray[len-3], inputArray[len-1]);
     display.textContent = displayNumber;
+    saveInput("=");
 });
 
 function saveInput(operation){
     if (!inputPushed){
         inputArray.push(displayNumber);
-    }else if ("*+-/".includes(inputArray[inputArray.length-1])) {
+    }else if ("*+-/=".includes(inputArray[inputArray.length-1])) {
         let m = inputArray.pop();
         console.log(m);
     }
