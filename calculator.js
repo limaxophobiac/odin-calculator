@@ -33,24 +33,50 @@ clrBtn.addEventListener("click", function() {
 
 addBtn.addEventListener("click", function(){
     saveInput("+");
-    console.log(inputArray);
 });
 
 subBtn.addEventListener("click", function(){
     saveInput("-");
-    console.log(inputArray);
 });
 
 multBtn.addEventListener("click", function(){
     saveInput("*");
-    console.log(inputArray);
 });
 
 divBtn.addEventListener("click", function(){
     saveInput("/");
-    console.log(inputArray);
 });
 
+eqBtn.addEventListener("click", function(){
+    if (inputArray.length === 2){
+    inputArray.push(displayNumber);
+    displayNumber = (operate(inputArray[1], inputArray[0], inputArray[2]));
+    display.textContent = displayNumber;
+    inputArray = [];
+    inputPushed = true;
+    }  
+});
+
+function saveInput(operation){
+    if (inputArray.length === 0){
+        inputArray.push(displayNumber);
+        inputArray.push(operation);
+        inputPushed = true;
+    } else if ("*+-/".includes(inputArray[1]) && inputPushed) {
+        let m = inputArray.pop();
+        inputArray.push(operation);
+    } else if (inputArray.length === 2 && !inputPushed){
+        inputArray.push(displayNumber);
+        displayNumber = (operate(inputArray[1], inputArray[0], inputArray[2]));
+        display.textContent = displayNumber;
+        inputArray = [];
+        inputArray.push(displayNumber);
+        inputArray.push(operation);
+        inputPushed = true;
+    }
+}
+
+/*
 eqBtn.addEventListener("click", function(){
     if (inputArray[inputArray.length -1] === "="){return}
     inputArray.push(displayNumber);
@@ -61,16 +87,16 @@ eqBtn.addEventListener("click", function(){
 });
 
 function saveInput(operation){
-    if (!inputPushed){
+    if (!inputPushed || inputArray[inputArray.length-1] === "="){
         inputArray.push(displayNumber);
-    }else if ("*+-/=".includes(inputArray[inputArray.length-1])) {
+    }else if ("*+-/".includes(inputArray[inputArray.length-1])) {
         let m = inputArray.pop();
         console.log(m);
     }
     inputArray.push(operation);
     inputPushed = true;
 }
-
+*/
 zero.addEventListener("click", function(){
     if (displayNumber === "0" || inputPushed){
         displayNumber = "0";
